@@ -44,7 +44,7 @@ public class QuartzInitializer implements Initializer {
     @Override
     public void init(Application application) {
         // Run scheduler only when activated in application.properties:
-        Boolean enabled = application.getPippoSettings().getBoolean(SCHEDULER_ENABLED, false);
+        boolean enabled = application.getPippoSettings().getBoolean(SCHEDULER_ENABLED, false);
         if (enabled) {
             // Get the configuration from application.properties
             List<String> quartzKeys = application.getPippoSettings().getSettingNames(QUARTZ_KEYS);
