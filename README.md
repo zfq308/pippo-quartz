@@ -60,8 +60,7 @@ Then, we must create the Quartz configuration file: `src/main/resources/conf/qua
                 <description>This is TriggerA</description>
                 <job-name>JobA</job-name>
                 <job-group>DummyGroup</job-group>
-                <!-- It will run every 2 seconds -->
-                <cron-expression>0/2 * * * * ?</cron-expression>
+                <cron-expression>0/2 * * * * ?</cron-expression> <!-- It will run every 2 seconds -->
             </cron>
         </trigger>
         
@@ -73,7 +72,7 @@ Then, we must create the Quartz configuration file: `src/main/resources/conf/qua
                 <job-name>JobB</job-name>
                 <job-group>DummyGroup</job-group>
                 <repeat-count>5</repeat-count> <!-- repeat 5 times -->
-                <repeat-interval>10000</repeat-interval>  <!--  every 10 seconds -->
+                <repeat-interval>10000</repeat-interval> <!-- every 10 seconds -->
             </simple>
         </trigger>
         
