@@ -67,7 +67,7 @@ public class QuartzInitializer implements Initializer {
     @Override
     public void destroy(Application application) {
         try {
-            if (this.scheduler != null) {
+            if (this.scheduler != null && !this.scheduler.isShutdown()) {
                 this.scheduler.shutdown();
             }
             LOG.debug("QuartzInitializer destroy");
