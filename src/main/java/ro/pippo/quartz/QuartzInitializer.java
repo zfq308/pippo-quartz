@@ -26,6 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ro.pippo.core.Application;
 import ro.pippo.core.Initializer;
+import ro.pippo.core.PippoSettings;
 
 /**
  *
@@ -44,13 +45,14 @@ public class QuartzInitializer implements Initializer {
     @Override
     public void init(Application application) {
         // Run scheduler only when activated in application.properties:
-        boolean enabled = application.getPippoSettings().getBoolean(SCHEDULER_ENABLED, false);
+        PippoSettings settings = application.getPippoSettings();
+        boolean enabled = settings.getBoolean(SCHEDULER_ENABLED, false);
         if (enabled) {
             // Get the configuration from application.properties
-            List<String> quartzKeys = application.getPippoSettings().getSettingNames(QUARTZ_KEYS);
+            List<String> quartzKeys = settings.getSettingNames(QUARTZ_KEYS);
             Properties properties = new Properties();
             quartzKeys.stream().forEach((key) -> {
-                properties.put(key, application.getPippoSettings().getString(key, null));
+                properties.put(key, settings.getString(key, null));
             });
             // Run scheduler
             try {
